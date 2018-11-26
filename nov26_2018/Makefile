@@ -4,4 +4,4 @@ init:
 	pipenv --python 3.7
 
 test:
-	pipenv
+	pipenv run python ./test.py
