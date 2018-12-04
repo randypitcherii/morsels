@@ -5,3 +5,6 @@ init:
 
 test:
 	pipenv run python ./test.py
+
+shell:
+	pipenv run python

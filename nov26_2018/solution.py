@@ -1,9 +1,5 @@
 
 def add(matrixA, matrixB):
-    return add_firstDraft(matrixA, matrixB)
-
-
-def add_firstDraft(matrixA, matrixB):
     result = []
     for rowA, rowB in zip(matrixA, matrixB):
         result.append([])
@@ -11,3 +7,13 @@ def add_firstDraft(matrixA, matrixB):
             result[-1].append(entryA + entryB)
     
     return result
+
+
+def recursiveAdd(runningTotal, matrices):
+    if (len(matrices) is 1):
+        return add(runningTotal, matrices[0])
+    
+    return recursiveAdd(add(runningTotal, matrices[0]), matrices[1:])
+
+def add_multiple(*matrices):
+    return recursiveAdd(matrices[0],matrices[1:])
