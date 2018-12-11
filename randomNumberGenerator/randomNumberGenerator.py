@@ -18,7 +18,7 @@ class RandomNumberGenerator():
         # generate the random values list
         self._values = self.getRandomValues(range_min, range_max)
     
-    def getRandomValues(self, minVal, maxVal):
+    def getRandomValues(self, `minVal, maxVal):
         values = [i for i in range(minVal, maxVal)]
         return shuffle(values)
         
