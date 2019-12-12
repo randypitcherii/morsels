@@ -1,3 +1,18 @@
+def get_clean_anagram_input(word):
+    """returns word with all letters lowercased and no non-alpha chars
+
+    Args:
+        word - string input to is_anagram
+    
+    Returns:
+        character iterator - clean string for easier anagram checking
+    """
+    # lower case
+    lowercase_word = word.lower()
+
+    return filter(lambda char: char.isalpha(), lowercase_word)
+
+
 def get_char_frequency_dict(word):
     """returns a dict mapping chars present word to the count of those chars
 
@@ -28,8 +43,13 @@ def is_anagram(word1, word2):
     Returns:
         boolean - true if word1 and word2 are anagrams, false if not
     """
-    # get character frequency dicts for faster comparisons
-    frequency_dict_1 = get_char_frequency_dict(word1.lower())
-    frequency_dict_2 = get_char_frequency_dict(word2.lower())
+    # clean input
+    clean_word1 = get_clean_anagram_input(word1)
+    clean_word2 = get_clean_anagram_input(word2)
 
+    # get character frequency dicts for faster comparisons
+    frequency_dict_1 = get_char_frequency_dict(clean_word1)
+    frequency_dict_2 = get_char_frequency_dict(clean_word2)
+
+    # compare dicts
     return frequency_dict_1 == frequency_dict_2
