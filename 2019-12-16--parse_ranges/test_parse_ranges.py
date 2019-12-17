@@ -27,7 +27,6 @@ class ParseRangesTests(unittest.TestCase):
         numbers = parse_ranges('100-1000000000000')
         self.assertEqual(next(numbers), 100)
 
-    @unittest.expectedFailure
     def test_with_individual_numbers(self):
         self.assertEqual(
             list(parse_ranges('0,4-8,20,43-45')),

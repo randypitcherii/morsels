@@ -25,7 +25,11 @@ def parse_ranges(ranges_string):
     list_of_range_strings = ranges_string.split(',')
     ranges = []
     for range_string in list_of_range_strings:
-        start, stop = range_string.split('-')
+        if '-' in range_string:
+            start, stop = range_string.split('-')
+        else:
+            start = int(range_string)
+            stop = start
         ranges.append((int(start), int(stop)))
     
     return get_next_range_value(ranges)
