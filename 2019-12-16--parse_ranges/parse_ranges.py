@@ -1,3 +1,16 @@
+def get_next_range_value(ranges):
+    """Generator function that returns the next value in a series from parsed ranges
+
+    Args:
+        ranges - list of (start, stop) tuples to build a range from
+    Yields:
+        next - int value that is next in the series
+    """
+    for start, stop in ranges:
+        while start <= stop:
+            yield start
+            start += 1
+
 def parse_ranges(ranges_string):
     """ parses string of ranges and returns parsed iterable
 
@@ -15,12 +28,5 @@ def parse_ranges(ranges_string):
         start, stop = range_string.split('-')
         ranges.append((int(start), int(stop)))
     
-    # build the iterable
-    parsed_ranges = []
-    for start, stop in ranges:
-        while start <= stop:
-            parsed_ranges.append(start)
-            start += 1
-    
-    return parsed_ranges
+    return get_next_range_value(ranges)
 
